@@ -50,6 +50,7 @@ import com.tom.cpm.shared.loaders.GithubRepoResourceLoader;
 import com.tom.cpm.shared.loaders.ModelsCDNResourceLoader;
 import com.tom.cpm.shared.loaders.PasteResourceLoader;
 import com.tom.cpm.shared.loaders.PastebinResourceLoader;
+import com.tom.cpm.shared.loaders.AIHMCResourceLoader;
 import com.tom.cpm.shared.model.SkinType;
 import com.tom.cpm.shared.parts.IModelPart;
 import com.tom.cpm.shared.parts.ModelPartEnd;
@@ -116,6 +117,7 @@ public class ModelDefinitionLoader<GP> {
 		LOADERS.put("p", new PasteResourceLoader());
 		LOADERS.put("pb", new PastebinResourceLoader());
 		LOADERS.put("ms", new ModelsCDNResourceLoader());
+		LOADERS.put("aihmc", new AIHMCResourceLoader());
 		LOADERS.put("local", new ResourceLoader() {
 
 			@Override

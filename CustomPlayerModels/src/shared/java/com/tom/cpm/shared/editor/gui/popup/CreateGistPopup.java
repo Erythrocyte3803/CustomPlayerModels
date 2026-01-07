@@ -70,6 +70,23 @@ public class CreateGistPopup extends PopupPanel {
 			setter.setTooltip(null);
 			return;
 		}
+
+		if(text.startsWith("https://4d.aihoss.top/")) {
+			String path = text.substring("https://4d.aihoss.top/".length());
+			String[] sp = path.split("/");
+			if(sp.length < 4 ){
+				setter.setText("Invalid AIHMC URL");
+				setter.setTooltip(new Tooltip(frm, "Your link should look like this:\\https://4d.aihoss.top/<year>/<month>/<day>/<id>"));
+				return;
+			} else {
+				setter.setText("");
+				setter.setTooltip(null);
+				if(linkConsumer != null)
+					linkConsumer.accept(new Link("aihmc", sp[0] + "/" + sp[1] + "/" + sp[2] + "/" + sp[3]));
+				return;
+			}
+		}
+
 		if(text.startsWith("https://gist.github.com/")) {
 			text = text.substring("https://gist.github.com/".length());
 			String[] sp = text.split("/");
@@ -85,8 +102,9 @@ public class CreateGistPopup extends PopupPanel {
 				return;
 			}
 		}
+
 		setter.setText("Unknown URL");
-		setter.setTooltip(new Tooltip(frm, "Unknown link, currently only GitHub Gists are supported."));
+		setter.setTooltip(new Tooltip(frm, "Unknown link, currently only GitHub Gists and AIHMC links are supported."));
 		return;
 	}
 
